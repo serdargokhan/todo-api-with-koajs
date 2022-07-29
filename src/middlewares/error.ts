@@ -1,4 +1,7 @@
-export const errorLogger = async (ctx, next) => {
+// Types
+import {Context, Next} from "koa"
+
+export const errorLogger = async (ctx: Context, next: Next) => {
     try {
         await next();
     } catch (err) {

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "app.js",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node src/app.js"
+    "start": "tsup --watch --onSuccess \"node dist/app.js\""
   },
   "keywords": [],
   "author": "",
@@ -19,5 +19,15 @@
     "koa-helmet": "^6.1.0",
     "koa-logger": "^3.2.1",
     "mongodb": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.5",
+    "@types/koa__cors": "^3.3.0",
+    "@types/koa__router": "^8.0.11",
+    "@types/koa-bodyparser": "^4.3.7",
+    "@types/koa-logger": "^3.1.2",
+    "@types/node": "^18.6.2",
+    "tsup": "^6.2.0",
+    "typescript": "^4.7.4"
   }
 }

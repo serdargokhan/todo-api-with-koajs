@@ -1,14 +1,17 @@
 import { ObjectId } from "mongodb";
+// Types
+import {Context} from "koa"
 
-export const getTodos = async (ctx) => {
+export const getTodos = async (ctx: Context) => {
     const todos = await ctx.mongo.db("koa-js").collection("todos").find({}).toArray();
+    
     ctx.body = {
         status: "OK",
         todos
     }
 }
 
-export const createTodo = async (ctx) => {
+export const createTodo = async (ctx: Context) => {
 
     if (Array.isArray(ctx.request.body)) {
         const result = await ctx.mongo.db("koa-js").collection("todos").insertMany([...ctx.request.body]);
@@ -34,14 +37,14 @@ export const createTodo = async (ctx) => {
     };
 }
 
-export const updateTodo = async (ctx) => {
+export const updateTodo = async (ctx: Context) => {
     const { id } = ctx.params;
 
     const { todo } = ctx.request.body;
 
     if (!todo) ctx.throw(400, "Please provide 'todo' field in your body request.");
 
-    const result = await ctx.mongo.db("koa-js").collection("todos").updateOne({ _id: ObjectId(id) }, [{ $set: { todo: todo } }]);
+    const result = await ctx.mongo.db("koa-js").collection("todos").updateOne({ _id: new ObjectId(id) }, [{ $set: { todo: todo } }]);
 
     if (result.acknowledged === false) ctx.throw(500, "There is an issue with our database. Please try again.");
 
@@ -51,10 +54,10 @@ export const updateTodo = async (ctx) => {
     }
 }
 
-export const deleteTodo = async (ctx) => {
+export const deleteTodo = async (ctx: Context) => {
     const { id } = ctx.params;
 
-    const result = await ctx.mongo.db("koa-js").collection("todos").deleteOne({ _id: ObjectId(id) });
+    const result = await ctx.mongo.db("koa-js").collection("todos").deleteOne({ _id: new ObjectId(id) });
 
     if (result.acknowledged === false) ctx.throw(500, "There is an issue with our database. Please try again.");
 
