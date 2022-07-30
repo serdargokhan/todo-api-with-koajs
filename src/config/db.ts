@@ -5,7 +5,7 @@ import { env } from "./environment";
 // Types
 import {Context, Next} from "koa"
 
-const client = new MongoClient(`mongodb+srv://serdargokhan:${env.MONGO_PASSWORD}@todoapp.onamy.mongodb.net/?retryWrites=true&w=majority`);
+const client = new MongoClient(env.MONGO_URI ?? "mongodb://127.0.0.1:27017");
 
 client.connect(() => {
     console.log("Database connection is established.");
