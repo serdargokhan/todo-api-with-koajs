@@ -14,79 +14,79 @@ To run this project, you will need to add the following environment variables to
 
 #### Get all todos
 
-```http
+```
   GET /api/todo
 ```
 
 Everyone can send a request to this endpoint. There is no authentication.
 
 ```json
-    {
-        "status": "OK",
-        "todos": [
-            {
+{
+    "status": "OK",
+    "todos": [
+        {
             "_id": "62e282be647b724ed8db802c",
             "todo": "Hello Koa.js",
             "author": "Serdar Gökhan",
             "createdAt": "2022-07-28T12:36:14.293Z"
         }
-        ]
-    }
+    ]
+}
 ```
 
 #### Create todo or todos
 
-```http
+```
   POST /api/todo
 ```
 
 To create single todo you must send `todo` and `author` fields in your request body.
 
 ```json
-    {
-      "todo": "Hello Koa.js",
-      "author": "Serdar Gökhan",
-    }
+{
+    "todo": "Hello Koa.js",
+    "author": "Serdar Gökhan"
+}
 ```
 
 #### Update single todo
 
-```http
+```
   PUT /api/todo/${todoId}
 ```
 
 To update single todo you must send `todo` field in your request body.
-  
-| Params | Type     | Description                |
-| :-------- | :------- | :------------------------- |
+
+| Params   | Type     | Description                    |
+| :------- | :------- | :----------------------------- |
 | `todoId` | `string` | **Mandatory** Provide `todoId` |
 
 The response would be:
 
 ```json
-    {
-      "status": "OK",
-      "message": "Found 0 todo(s) in the database with the id of undefined. 0 of your todo(s) has been modified."
-    }
+{
+    "status": "OK",
+    "message": "Found 0 todo(s) in the database with the id of undefined. 0 of your todo(s) has been modified."
+}
 ```
 
 #### Delete single todo
 
-```http
+```
   DELETE /api/todo/${todoId}
 ```
 
 To delete single todo you must send `todo` field in your request body.
-  
-| Params | Type     | Description                |
-| :-------- | :------- | :------------------------- |
+
+| Params   | Type     | Description                    |
+| :------- | :------- | :----------------------------- |
 | `todoId` | `string` | **Mandatory** Provide `todoId` |
 
 The response would be:
 
 ```json
-    {
-      "status": "OK",
-      "message": "Deleted 1 todo(s) in the database with the id of 62e282be647b724ed8db802c"
-    }
+{
+    "status": "OK",
+    "message": "Deleted 1 todo(s) in the database with the id of 62e282be647b724ed8db802c"
+}
 ```
