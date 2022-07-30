@@ -1,5 +1,5 @@
 // Types
-import {Context, Next} from "koa"
+import {Context, Next} from 'koa';
 
 export const errorLogger = async (ctx: Context, next: Next) => {
     try {
@@ -8,4 +8,4 @@ export const errorLogger = async (ctx: Context, next: Next) => {
         ctx.status = 500;
         console.error(err);
     }
-}
+};

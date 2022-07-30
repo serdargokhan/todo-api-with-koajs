@@ -1,5 +1,5 @@
 // Types
-import {Context, Next} from "koa"
+import {Context, Next} from 'koa';
 
 export const timeLogger = async (ctx: Context, next: Next) => {
     const now = new Date().toUTCString();

@@ -1,16 +1,16 @@
-import Koa from "koa";
-import KoaLogger from "koa-logger";
-import KoaBodyParser from "koa-bodyparser";
-import KoaCors from "@koa/cors";
-import KoaHelmet from "koa-helmet";
+import Koa from 'koa';
+import KoaLogger from 'koa-logger';
+import KoaBodyParser from 'koa-bodyparser';
+import KoaCors from '@koa/cors';
+import KoaHelmet from 'koa-helmet';
 // Routes
-import todosRouter from "./routes/todos";
+import todosRouter from '@/routes/todos';
 // Middlewares
-import { errorLogger, timeLogger } from "./middlewares/index";
+import {errorLogger, timeLogger} from '@/middlewares/index';
 // Database
-import { mongoConnection } from "./config/db";
+import {mongoConnection} from '@/config/db';
 // Environment Variables
-import { env } from "./config/environment";
+import {env} from '@/config/environment';
 
 const app = new Koa();
 const PORT = env.PORT || 3000;
