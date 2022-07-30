@@ -1,3 +1,15 @@
+# Todo API with KoaJS
+
+This is a todo api written with KoaJS framework. It uses MongoDB as the database
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`PORT`
+
+`MONGO_URI`
+
 ## API Usage
 
 #### Get all todos
