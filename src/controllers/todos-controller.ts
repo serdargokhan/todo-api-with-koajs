@@ -44,8 +44,10 @@ export const createTodo = async (ctx: Context) => {
 export const updateTodo = async (ctx: Context) => {
     const {todoId} = ctx.params;
 
+    const todoData = ctx.request.body as Todo;
+
     const updatedTodos = {
-        ...ctx.request.body,
+        ...todoData,
         updatedAt: new Date()
     };
 
