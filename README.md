@@ -34,25 +34,27 @@ Everyone can send a request to this endpoint. There is no authentication.
 }
 ```
 
-#### Create todo or todos
+#### Create single todo
 
 ```
   POST /api/todo
 ```
 
-To create single todo you must send `todo` and `author` fields in your request body.
+To create single todo you must send `todo`, `author`, `authorEmail`, and `completed` fields in your request body.
 
 ```json
 {
     "todo": "Hello Koa.js",
-    "author": "Serdar Gökhan"
+    "author": "Serdar Gökhan",
+    "authorEmail": "test@test.com",
+    "completed": true
 }
 ```
 
 #### Update single todo
 
 ```
-  PUT /api/todo/${todoId}
+  PUT /api/todo/:todoId
 ```
 
 To update single todo you must send `todo` field in your request body.
@@ -66,17 +68,17 @@ The response would be:
 ```json
 {
     "status": "OK",
-    "message": "Found 0 todo(s) in the database with the id of undefined. 0 of your todo(s) has been modified."
+    "message": "Found 1 todo(s) in the database with the id of undefined. 1 of your todo(s) has been modified."
 }
 ```
 
 #### Delete single todo
 
 ```
-  DELETE /api/todo/${todoId}
+  DELETE /api/todo/:todoId
 ```
 
-To delete single todo you must send `todo` field in your request body.
+To delete single todo you must send query params in the URL
 
 | Params   | Type     | Description                    |
 | :------- | :------- | :----------------------------- |
