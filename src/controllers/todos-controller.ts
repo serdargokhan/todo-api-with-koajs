@@ -99,7 +99,6 @@ export const deleteTodo = async (ctx: Context) => {
         });
     }
 
-    ctx.status = 204;
     ctx.body = {
         status: 'OK',
         message: `Deleted ${result.deletedCount} todo(s) in the database with the id of ${todoId}`
