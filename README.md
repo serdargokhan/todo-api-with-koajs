@@ -1,6 +1,6 @@
 # Todo API with KoaJS
 
-This is a todo api written with KoaJS framework. It uses MongoDB as the database
+This is a todo API written with KoaJS framework which has very similarity with Express. This todo API uses MongoDB as the database
 
 ## Environment Variables
 
@@ -10,7 +10,40 @@ To run this project, you will need to add the following environment variables to
 
 `MONGO_URI`
 
+`ACCESS_TOKEN`
+
 ## API Usage
+
+#### Register
+
+```
+  POST /api/register
+```
+
+Everyone can send a request to this endpoint to register. You must send a request like below. All fields are mandatory.
+
+```json
+{
+    "username": "serdargokhan",
+    "email": "serdargokhan@test.com",
+    "password": "1234"
+}
+```
+
+#### Login
+
+```
+  POST /api/login
+```
+
+Everyone can send a request to this endpoint to login. You must send a request like below. All fields are mandatory. After you login successfully the API will send you an AccessToken and you can use it for other routes for authentication.
+
+```json
+{
+    "username": "serdargokhan",
+    "password": "1234"
+}
+```
 
 #### Get all todos
 
@@ -18,7 +51,7 @@ To run this project, you will need to add the following environment variables to
   GET /api/todo
 ```
 
-Everyone can send a request to this endpoint. There is no authentication.
+Everyone can send a request to this endpoint. There is no authentication for this route.
 
 ```json
 {
@@ -28,7 +61,9 @@ Everyone can send a request to this endpoint. There is no authentication.
             "_id": "62e282be647b724ed8db802c",
             "todo": "Hello Koa.js",
             "author": "Serdar Gökhan",
-            "createdAt": "2022-07-28T12:36:14.293Z"
+            "authorEmail": "gokhan@test.com",
+            "createdAt": "2022-08-01T07:45:06.622Z",
+            "updatedAt": "2022-08-02T10:56:45.300Z"
         }
     ]
 }
@@ -40,12 +75,15 @@ Everyone can send a request to this endpoint. There is no authentication.
   POST /api/todo
 ```
 
-To create single todo you must send `todo`, `author`, `authorEmail`, and `completed` fields in your request body.
+To create single todo you must send `todo`, `authorEmail`, and `completed` fields in your request body. This route has authentication and uses JWT. So you need to specify Bearer token in the following format: `Bearer {Your Token}`
+
+| Params   | Type     | Description                    |
+| :------- | :------- | :----------------------------- |
+| `todoId` | `string` | **Mandatory** Provide `todoId` |
 
 ```json
 {
     "todo": "Hello Koa.js",
-    "author": "Serdar Gökhan",
     "authorEmail": "test@test.com",
     "completed": true
 }
@@ -57,7 +95,7 @@ To create single todo you must send `todo`, `author`, `authorEmail`, and `comple
   PUT /api/todo/:todoId
 ```
 
-To update single todo you must send `todo` field in your request body.
+To create single todo you must send `todo`, `authorEmail`, and `completed` fields in your request body. This route has authentication and uses JWT. So you need to specify Bearer token in the following format: `Bearer {Your Token}`
 
 | Params   | Type     | Description                    |
 | :------- | :------- | :----------------------------- |
@@ -78,7 +116,7 @@ The response would be:
   DELETE /api/todo/:todoId
 ```
 
-To delete single todo you must send query params in the URL
+To delete single todo you must send query params in the URL. This route has authentication and uses JWT. So you need to specify Bearer token in the following format: `Bearer {Your Token}`
 
 | Params   | Type     | Description                    |
 | :------- | :------- | :----------------------------- |
