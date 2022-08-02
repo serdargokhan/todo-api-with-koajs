@@ -19,6 +19,7 @@ export const authenticate = async (ctx: Context, next: Next) => {
     try {
         const token: any = jwt.verify(accessToken, env.ACCESS_TOKEN);
         ctx.user = token.username;
+        ctx.email = token.email;
     } catch (err) {
         ctx.status = 403;
         ctx.body = {

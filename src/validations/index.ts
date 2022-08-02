@@ -1,2 +1,2 @@
-export {authSchema} from './auth-validation';
-export {todoSchema} from './todo-validation';
+export {authLoginSchema, authRegisterSchema} from './auth-validation';
+export {todoPostSchema, todoPutSchema} from './todo-validation';

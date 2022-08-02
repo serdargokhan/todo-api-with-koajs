@@ -51,9 +51,13 @@ export const loginUser = async (ctx: Context) => {
         return;
     }
 
-    const accessToken = jwt.sign({username: username}, env.ACCESS_TOKEN, {
-        expiresIn: '15m'
-    });
+    const accessToken = jwt.sign(
+        {username: username, email: result.email},
+        env.ACCESS_TOKEN,
+        {
+            expiresIn: '15m'
+        }
+    );
 
     ctx.body = {
         status: 'OK',

@@ -18,12 +18,12 @@ export const getTodos = async (ctx: Context) => {
 };
 
 export const createTodo = async (ctx: Context) => {
-    const {todo, authorEmail, completed} = ctx.request.body as Todo;
+    const {todo, completed} = ctx.request.body as Todo;
 
     const result = await ctx.mongo.db('koa-js').collection('todos').insertOne({
         todo,
         author: ctx.user,
-        authorEmail,
+        authorEmail: ctx.email,
         completed,
         createdAt: new Date()
     });
