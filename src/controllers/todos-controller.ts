@@ -18,11 +18,11 @@ export const getTodos = async (ctx: Context) => {
 };
 
 export const createTodo = async (ctx: Context) => {
-    const {todo, author, authorEmail, completed} = ctx.request.body as Todo;
+    const {todo, authorEmail, completed} = ctx.request.body as Todo;
 
     const result = await ctx.mongo.db('koa-js').collection('todos').insertOne({
         todo,
-        author,
+        author: ctx.user,
         authorEmail,
         completed,
         createdAt: new Date()
@@ -64,10 +64,11 @@ export const updateTodo = async (ctx: Context) => {
     }
 
     if (result.matchedCount === 0) {
-        return (ctx.body = {
+        ctx.body = {
             status: 'Not Found',
             message: `There is no todo with the id of ${todoId}`
-        });
+        };
+        return;
     }
 
     ctx.status = 201;
@@ -93,10 +94,11 @@ export const deleteTodo = async (ctx: Context) => {
     }
 
     if (result.deletedCount === 0) {
-        return (ctx.body = {
+        ctx.body = {
             status: 'Not Found',
             message: `There is no todo with the id of ${todoId}`
-        });
+        };
+        return;
     }
 
     ctx.body = {

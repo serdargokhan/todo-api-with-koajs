@@ -4,7 +4,7 @@ import KoaBodyParser from 'koa-bodyparser';
 import KoaCors from '@koa/cors';
 import KoaHelmet from 'koa-helmet';
 // Routes
-import todosRouter from '@/routes/todos';
+import {authRouter, todosRouter} from '@/routes/index';
 // Middlewares
 import {errorLogger, timeLogger} from '@/middlewares/index';
 // Database
@@ -27,6 +27,7 @@ app.use(mongoConnection);
 
 // Init routes
 app.use(todosRouter.routes()).use(todosRouter.allowedMethods());
+app.use(authRouter.routes()).use(authRouter.allowedMethods());
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
