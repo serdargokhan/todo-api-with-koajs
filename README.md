@@ -51,7 +51,7 @@ Everyone can send a request to this endpoint to login. You must send a request l
   GET /api/todo
 ```
 
-Everyone can send a request to this endpoint. There is no authentication for this route.
+Everyone can send a request to this endpoint. There is no authentication for this route. Response would be:
 
 ```json
 {
@@ -75,7 +75,7 @@ Everyone can send a request to this endpoint. There is no authentication for thi
   POST /api/todo
 ```
 
-To create single todo you must send `todo`, `authorEmail`, and `completed` fields in your request body. This route has authentication and uses JWT. So you need to specify Bearer token in the following format: `Bearer {Your Token}`
+To create single todo you must send `todo` and `completed` fields in your request body. This route has authentication and uses JWT. So you need to specify Bearer token in the following format: `Bearer {Your Token}`
 
 | Params   | Type     | Description                    |
 | :------- | :------- | :----------------------------- |
@@ -84,7 +84,6 @@ To create single todo you must send `todo`, `authorEmail`, and `completed` field
 ```json
 {
     "todo": "Hello Koa.js",
-    "authorEmail": "test@test.com",
     "completed": true
 }
 ```
@@ -95,7 +94,7 @@ To create single todo you must send `todo`, `authorEmail`, and `completed` field
   PUT /api/todo/:todoId
 ```
 
-To create single todo you must send `todo`, `authorEmail`, and `completed` fields in your request body. This route has authentication and uses JWT. So you need to specify Bearer token in the following format: `Bearer {Your Token}`
+To create single todo you must send `todo` or `completed` field in your request body. This route has authentication and uses JWT. So you need to specify Bearer token in the following format: `Bearer {Your Token}`
 
 | Params   | Type     | Description                    |
 | :------- | :------- | :----------------------------- |
