@@ -9,8 +9,11 @@ import {
     deleteTodo
 } from '@/controllers/todos-controller';
 // Validation
-import {authenticate} from '@/middlewares/index';
-import {validateRequests} from '@/middlewares/validateRequests';
+import {
+    authenticate,
+    validateUser,
+    validateRequests
+} from '@/middlewares/index';
 import {todoPostSchema, todoPutSchema} from '@/validations';
 
 const router = new Router();
@@ -23,9 +26,13 @@ router.post(
 );
 router.put(
     '/api/todo/:todoId',
-    compose([authenticate, validateRequests(todoPutSchema)]),
+    compose([authenticate, validateUser, validateRequests(todoPutSchema)]),
     updateTodo
 );
-router.delete('/api/todo/:todoId', authenticate, deleteTodo);
+router.delete(
+    '/api/todo/:todoId',
+    compose([authenticate, validateUser]),
+    deleteTodo
+);
 
 export default router;
