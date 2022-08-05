@@ -45,6 +45,30 @@ Everyone can send a request to this endpoint to login. You must send a request l
 }
 ```
 
+#### Get single todos
+
+```
+  GET /api/todo/:todoId
+```
+
+Everyone can send a request to this endpoint. There is no authentication for this route. Response would be:
+
+```json
+{
+    "status": "OK",
+    "todos": [
+        {
+            "_id": "62e282be647b724ed8db802c",
+            "todo": "Hello Koa.js",
+            "author": "Serdar Gökhan",
+            "authorEmail": "gokhan@test.com",
+            "createdAt": "2022-08-01T07:45:06.622Z",
+            "updatedAt": "2022-08-02T10:56:45.300Z"
+        }
+    ]
+}
+```
+
 #### Get all todos
 
 ```
