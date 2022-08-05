@@ -3,6 +3,26 @@ import {ObjectId} from 'mongodb';
 import {Context} from 'koa';
 import {Todo} from '@/interfaces/Todo';
 
+export const getTodo = async (ctx: Context) => {
+    const {todoId} = ctx.params;
+
+    const todoItem = await ctx.mongo
+        .db('koa-js')
+        .collection('todos')
+        .findOne({_id: new ObjectId(todoId)});
+
+    if (!todoItem) {
+        ctx.status = 204;
+        return;
+    }
+
+    ctx.status = 200;
+    ctx.body = {
+        status: 'OK',
+        todoItem
+    };
+};
+
 export const getTodos = async (ctx: Context) => {
     const todos = await ctx.mongo
         .db('koa-js')

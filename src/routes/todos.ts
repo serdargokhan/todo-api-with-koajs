@@ -4,6 +4,7 @@ import compose from 'koa-compose';
 // Controllers
 import {
     getTodos,
+    getTodo,
     createTodo,
     updateTodo,
     deleteTodo
@@ -19,6 +20,7 @@ import {todoPostSchema, todoPutSchema} from '@/validations';
 const router = new Router();
 
 router.get('/api/todo', getTodos);
+router.get('/api/todo/:todoId', getTodo);
 router.post(
     '/api/todo',
     compose([authenticate, validateRequests(todoPostSchema)]),
