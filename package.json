@@ -5,7 +5,8 @@
     "description": "",
     "main": "dist/app.js",
     "scripts": {
-        "start": "tsup --watch --onSuccess \"node dist/app.js\""
+        "start": "tsup --watch --onSuccess \"node dist/app.js\"",
+        "perf": "autocannon --connections 100 http://localhost:3000/api/todos"
     },
     "keywords": [],
     "author": "",
@@ -33,6 +34,7 @@
         "@types/koa-bodyparser": "^4.3.7",
         "@types/koa-logger": "^3.1.2",
         "@types/node": "^18.6.2",
+        "autocannon": "^7.9.0",
         "tslib": "^2.4.0",
         "tsup": "^6.2.0",
         "typescript": "^4.7.4"
