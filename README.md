@@ -45,7 +45,7 @@ Everyone can send a request to this endpoint to login. You must send a request l
 }
 ```
 
-#### Get single todos
+#### Get single todo
 
 ```
   GET /api/todo/:todoId
@@ -101,10 +101,6 @@ Everyone can send a request to this endpoint. There is no authentication for thi
 
 To create single todo you must send `todo` and `completed` fields in your request body. This route has authentication and uses JWT. So you need to specify Bearer token in the following format: `Bearer {Your Token}`
 
-| Params   | Type     | Description                    |
-| :------- | :------- | :----------------------------- |
-| `todoId` | `string` | **Mandatory** Provide `todoId` |
-
 ```json
 {
     "todo": "Hello Koa.js",
@@ -119,10 +115,6 @@ To create single todo you must send `todo` and `completed` fields in your reques
 ```
 
 To create single todo you must send `todo` or `completed` field in your request body. This route has authentication and uses JWT. So you need to specify Bearer token in the following format: `Bearer {Your Token}`
-
-| Params   | Type     | Description                    |
-| :------- | :------- | :----------------------------- |
-| `todoId` | `string` | **Mandatory** Provide `todoId` |
 
 The response would be:
 
@@ -140,10 +132,6 @@ The response would be:
 ```
 
 To delete single todo you must send query params in the URL. This route has authentication and uses JWT. So you need to specify Bearer token in the following format: `Bearer {Your Token}`
-
-| Params   | Type     | Description                    |
-| :------- | :------- | :----------------------------- |
-| `todoId` | `string` | **Mandatory** Provide `todoId` |
 
 The response would be:
 
