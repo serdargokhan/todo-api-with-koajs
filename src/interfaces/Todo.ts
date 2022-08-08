@@ -1,5 +1,6 @@
 import {InferType} from 'yup';
 // Yup Schema
-import {todoSchema} from '@/validations/todo-validation';
+import {todoPostSchema, todoPutSchema} from '@/validations/todo-validation';
 
-export type Todo = InferType<typeof todoSchema>;
+export type PostTodo = InferType<typeof todoPostSchema>;
+export type PutTodo = InferType<typeof todoPutSchema>;

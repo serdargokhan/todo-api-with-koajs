@@ -1,5 +1,9 @@
 import {InferType} from 'yup';
 // Yup Schema
-import {authSchema} from '@/validations/auth-validation';
+import {
+    authRegisterSchema,
+    authLoginSchema
+} from '@/validations/auth-validation';
 
-export type Auth = InferType<typeof authSchema>;
+export type RegisterAuth = InferType<typeof authRegisterSchema>;
+export type LoginAuth = InferType<typeof authLoginSchema>;

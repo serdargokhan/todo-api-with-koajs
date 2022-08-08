@@ -6,10 +6,10 @@ import jwt from 'jsonwebtoken';
 import {env} from '@/config/environment';
 // Types
 import {Context} from 'koa';
-import {Auth} from '@/interfaces/index';
+import {LoginAuth, RegisterAuth} from '@/interfaces/index';
 
 export const registerUser = async (ctx: Context) => {
-    const {username, email, password} = ctx.request.body as Auth;
+    const {username, email, password} = ctx.request.body as RegisterAuth;
 
     const hashedPassword = await hash(password, 10);
 
@@ -26,7 +26,7 @@ export const registerUser = async (ctx: Context) => {
 };
 
 export const loginUser = async (ctx: Context) => {
-    const {username, password} = ctx.request.body;
+    const {username, password} = ctx.request.body as LoginAuth;
 
     const result = await ctx.mongo
         .db('koa-js')

@@ -1,7 +1,7 @@
 import {ObjectId} from 'mongodb';
 // Types
 import {Context} from 'koa';
-import {Todo} from '@/interfaces/Todo';
+import {PostTodo, PutTodo} from '@/interfaces/Todo';
 
 export const getTodo = async (ctx: Context) => {
     const {todoId} = ctx.params;
@@ -38,7 +38,7 @@ export const getTodos = async (ctx: Context) => {
 };
 
 export const createTodo = async (ctx: Context) => {
-    const {todo, completed} = ctx.request.body as Todo;
+    const {todo, completed} = ctx.request.body as PostTodo;
 
     const result = await ctx.mongo.db('koa-js').collection('todos').insertOne({
         todo,
@@ -64,7 +64,7 @@ export const createTodo = async (ctx: Context) => {
 export const updateTodo = async (ctx: Context) => {
     const {todoId} = ctx.params;
 
-    const todoData = ctx.request.body as Todo;
+    const todoData = ctx.request.body as PutTodo;
 
     const updatedTodos = {
         ...todoData,

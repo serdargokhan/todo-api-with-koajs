@@ -1,2 +1,2 @@
-export {Auth} from './Auth';
-export {Todo} from './Todo';
+export {LoginAuth, RegisterAuth} from './Auth';
+export {PostTodo, PutTodo} from './Todo';
